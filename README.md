@@ -43,8 +43,12 @@ sudo dnf update -y
 ip a show enp0s3
 
 # 3. Secure the SSH service
+# Edit /etc/ssh/sshd_config to enforce security baselines:
+# - PermitRootLogin no
+# - PasswordAuthentication yes (Temporary, moving towards SSH keys)
+sudo systemctl restart sshd
+```
 
----
 
 ## 💾 Storage Management: Logical Volume Manager (LVM) Lab
 
@@ -95,8 +99,5 @@ Storage Allocation Audit: Confirmed the successful runtime expansion from 4.0 GB
 
 Bash
 df -h /data/reportes
+```
 
-# Edit /etc/ssh/sshd_config to enforce security baselines:
-# - PermitRootLogin no
-# - PasswordAuthentication yes (Temporary, moving towards SSH keys)
-sudo systemctl restart sshd
