@@ -89,7 +89,7 @@ sudo chown -R soporte:soporte /data/reportes
 Phase B: Online Filesystem Expansion (On-the-Fly)
 To demonstrate LVM's capability to scale storage under production-like demands without unmounting the filesystem or causing downtime, the volume was extended using the remaining unallocated space in the VG:
 
-Bash
+
 # Extend the Logical Volume and scale the XFS filesystem simultaneously
 sudo lvextend -l +100%FREE -r /dev/vg_datos/lv_reportes
 3. Verification & Verification Metrics
@@ -97,7 +97,7 @@ Data Integrity Check: Verified that user data and file permissions remained comp
 
 Storage Allocation Audit: Confirmed the successful runtime expansion from 4.0 GB to 5.0 GB utilizing the storage file-system monitoring utility:
 
-Bash
+```bash
 df -h /data/reportes
 ```
 
