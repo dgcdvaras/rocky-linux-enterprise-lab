@@ -70,22 +70,24 @@ A secondary 5 GB virtual disk (`/dev/sdb`) was attached to the instance to simul
    sudo pvcreate /dev/sdb
 Create the Volume Group:
 
-Bash
+```bash
 sudo vgcreate vg_datos /dev/sdb
 Allocate the Logical Volume (Initial 4 GB):
 
-Bash
+```bash
 sudo lvcreate -L 4G -n lv_reportes vg_datos
 Format with Enterprise XFS Filesystem:
 
-Bash
+```bash
 sudo mkfs.xfs /dev/vg_datos/lv_reportes
-Establish Point of Mount & Assign Ownership:
+```
 
-Bash
+Establish Point of Mount & Assign Ownership:
+```bash
 sudo mkdir -p /data/reportes
 sudo mount /dev/vg_datos/lv_reportes /data/reportes
 sudo chown -R soporte:soporte /data/reportes
+```
 Phase B: Online Filesystem Expansion (On-the-Fly)
 To demonstrate LVM's capability to scale storage under production-like demands without unmounting the filesystem or causing downtime, the volume was extended using the remaining unallocated space in the VG:
 
