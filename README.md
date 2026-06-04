@@ -107,3 +107,15 @@ Storage Allocation Audit: Confirmed the successful runtime expansion from 4.0 GB
 df -h /data/reportes
 ```
 
+### 🛠️ Troubleshooting & Lessons Learned
+
+During the deployment, a standard real-world permissions issue was encountered and resolved:
+
+* **Issue: `Permission denied` on initial file write operations**
+  * *Context:* After successfully mounting the logical volume to `/data/reportes`, attempting to create a test file (`archivo_importante.txt`) as a standard non-root user (`soporte`) resulted in a bash permission failure.
+  * *Root Cause Analysis:* The mount point directory was initially provisioned using `sudo mkdir`, assigning explicit ownership to the `root` user by default, thereby locking out standard user write privileges.
+  * *Resolution:* Applied system administration best practices by recursively modifying the directory's user and group ownership to match the local operations user:
+    ```bash
+    sudo chown -R soporte:soporte /data/reportes
+    ```
+    This successfully restored standard I/O operations without relying on loose security workarounds like `chmod 777`.
