@@ -98,7 +98,7 @@ To demonstrate LVM's capability to scale storage under production-like demands w
 ```bash
 sudo lvextend -l +100%FREE -r /dev/vg_datos/lv_reportes
 ```
-3. Verification & Verification Metrics
+###3. Verification & Verification Metrics
 Data Integrity Check: Verified that user data and file permissions remained completely unaffected post-expansion via standard I/O operations.
 
 Storage Allocation Audit: Confirmed the successful runtime expansion from 4.0 GB to 5.0 GB utilizing the storage file-system monitoring utility:
