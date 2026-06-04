@@ -94,7 +94,7 @@ Phase B: Online Filesystem Expansion (On-the-Fly)
 To demonstrate LVM's capability to scale storage under production-like demands without unmounting the filesystem or causing downtime, the volume was extended using the remaining unallocated space in the VG:
 
 
-# Extend the Logical Volume and scale the XFS filesystem simultaneously
+## Extend the Logical Volume and scale the XFS filesystem simultaneously
 ```bash
 sudo lvextend -l +100%FREE -r /dev/vg_datos/lv_reportes
 ```
