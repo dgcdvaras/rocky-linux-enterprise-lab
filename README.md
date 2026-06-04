@@ -110,10 +110,10 @@ df -h /data/reportes
 
 Here is the confirmation of the storage layout and runtime expansion from the hypervisor and guest OS:
 
-![VirtualBox Storage Configuration](Screenshot 2026-06-04 171450.png)
+![VirtualBox Storage Configuration](Images/Storage.png)
 *Figure 1: Storage controller configuration in VirtualBox showing the secondary 5GB VDI attached.*
 
-![Storage Verification Command](Screenshot 2026-06-04 171450.png)
+![Storage Verification Command](Images/df-h.png)
 *Figure 2: Execution of 'df -h' confirming the online expansion to 5.0 GB.*
 
 ### 🛠️ Troubleshooting & Lessons Learned
