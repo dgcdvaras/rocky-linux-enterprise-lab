@@ -72,10 +72,12 @@ Create the Volume Group:
 
 ```bash
 sudo vgcreate vg_datos /dev/sdb
+```
 Allocate the Logical Volume (Initial 4 GB):
 
 ```bash
 sudo lvcreate -L 4G -n lv_reportes vg_datos
+```
 Format with Enterprise XFS Filesystem:
 
 ```bash
