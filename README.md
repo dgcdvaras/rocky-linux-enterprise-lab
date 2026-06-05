@@ -128,3 +128,21 @@ During the deployment, a standard real-world permissions issue was encountered a
     sudo chown -R soporte:soporte /data/reportes
     ```
     This successfully restored standard I/O operations without relying on loose security workarounds like `chmod 777`.
+
+
+## Lab: Automated Backup System with Systemd and Logrotate
+
+In this laboratory environment, I implemented a robust, enterprise-grade automated backup solution using native Rocky Linux utility tools.
+
+### Architecture Components
+*   **Backup Script (`respaldo_diario.sh`)**: A Bash script that packs and compresses critical configurations (`/etc`) into timestamped `.tar.gz` files, handling exit codes for error reporting.
+*   **Systemd Service (`respaldo.service`)**: A `oneshot` type service unit managed by Systemd to safely execute the backup pipeline.
+*   **Systemd Timer (`respaldo.timer`)**: A modern cron-replacement utility configured to automatically trigger the backup service daily at 2:00 AM, utilizing persistence flags to ensure execution even after system downtime.
+*   **Logrotate Policy (`logrotate_respaldos`)**: A automated log management routine configured to enforce a 7-day retention policy, automatically purging older archives to optimize storage capacity and prevent disk saturation.
+
+### Key Skills Demonstrated
+*   Troubleshooting system dependencies (`tar` installation via DNF) through structural log analysis (`/var/log/respaldo.log`).
+*   Systemd lifecycle control (`systemctl daemon-reload`, status verification, and timer listings).
+*   Storage capacity forecasting and lifecycle management.
+
+  
